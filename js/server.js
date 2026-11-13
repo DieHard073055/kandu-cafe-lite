@@ -61,7 +61,7 @@ export function payCard(s, t) {
   if (t.slip?.state === 'checking') {
     const end = t.slip.at + L.CHECK_MS;
     return `<div class="card pay"><button class="slip-btn" data-act="slip" data-arg="${t.id}" aria-label="View slip from Table ${t.table}"><img src="${t.slip.img}" alt=""></button>
-      <span class="grow"><b>Table ${t.table} · ${money(amount)}</b><small>Ref ${L.ref(t)}</small><small>${icon('clock')} Verify within ${due(end)}</small></span>
+      <span class="grow"><b>Table ${t.table} · ${money(amount)}</b><small>Ref ${L.ref(t)}</small><small>${icon('clock')} Verify · ${due(end)}</small></span>
       <span class="col"><button class="btn sm" data-act="approve" data-arg="${t.id}">${icon('check')}Received</button><button class="btn ghost sm" data-act="rejslip" data-arg="${t.id}">Reject</button></span></div>`;
   }
   return `<div class="card pay"><span class="tno">${t.table}</span><span class="grow"><b>Table ${t.table} · ${money(amount)}</b>

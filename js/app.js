@@ -31,7 +31,9 @@ function render() {
   const keep = view?.dataset.role === ui.role ? view.scrollTop : 0;
   const sheet = ui.sheet && SHEETS[ui.sheet]?.(s, now);
   const b = badges(s);
-  shell.className = `shell ${ui.role === 'guest' ? 'theme-c' : 'theme-m'} ${ui.role === 'kitchen' || ui.role === 'manager' ? 'wide' : ''}`;
+  shell.className = `shell ${ui.role === 'kitchen' || ui.role === 'manager' ? 'wide' : ''}`;
+  shell.dataset.theme = theme;
+  document.querySelector('meta[name=theme-color]').content = getComputedStyle(shell).getPropertyValue('--chrome').trim();
   app.innerHTML = `<header class="top">
       <span class="brand"><span class="mark" aria-hidden="true">K</span><span class="wordmark">Kandu Café <em>Lite</em></span></span>
       <nav class="seg" aria-label="Switch role">${ROLES.map(([k, n, , ic]) => `<a href="#${k}" class="${ui.role === k ? 'on' : ''}" ${ui.role === k ? 'aria-current="page"' : ''}>${icon(ic)}<span>${n}</span>${b[k] ? `<i class="dot">${b[k]}</i>` : ''}</a>`).join('')}</nav>
@@ -79,10 +81,17 @@ addEventListener('hashchange', () => { route(); render(); });
 ACT.close = () => shut();
 ACT.demo = () => open('demo');
 ACT.reset = () => { reset(); setMe(null); ui.table = null; ui.srv = null; ui.carts = { g: [], s: [] }; shut(); toast('Demo reset', 'Back to a busy lunchtime floor.'); };
+// Theme: a per-browser preference, so each demo device can keep its own look.
+const THEMES = [['ember', 'Ember', ['--ember', '--tofu', '--matcha']], ['yolk', 'Yolk', ['--matcha', '--cream', '--yolk']], ['matcha', 'Matcha', ['--matcha', '--yolk', '--cream']]];
+let theme = 'ember';
+try { theme = localStorage.getItem('kandu.lite.theme') || theme; } catch { /* storage blocked */ }
+if (!THEMES.some(([k]) => k === theme)) theme = 'ember';
+ACT.theme = (k) => { theme = k; try { localStorage.setItem('kandu.lite.theme', k); } catch { /* storage blocked */ } };
 ACT.newguest = () => { setMe(null); ui.carts.g = []; ui.f = {}; shut(); toast('New guest phone', 'Scan the same table and join with the PIN.'); };
 SHEETS.demo = () => ({
-  title: 'Demo',
-  body: `<ol class="steps">
+  title: 'Demo & theme',
+  body: `<p class="sec-t">Theme</p><div class="themes">${THEMES.map(([k, n, cs]) => `<button class="swatch" data-act="theme" data-arg="${k}" aria-pressed="${theme === k}"><span>${cs.map((c) => `<i style="background:var(${c})"></i>`).join('')}</span>${n}</button>`).join('')}</div>
+    <p class="sec-t">How to demo</p><ol class="steps">
       <li>Open this page in <b>two windows side by side</b>: one as Guest, one as Server or Manager. They update live.</li>
       <li><b>Guest</b>: scan a free table, start a tab, order, call the server, then close the tab and pay with a demo slip.</li>
       <li><b>Friend arriving late</b>: tap “New guest phone” below, scan the same table and join with the PIN.</li>
@@ -104,7 +113,7 @@ function tick() {
   });
   app.querySelectorAll('[data-due]').forEach((el) => {
     const left = Number(el.dataset.due) - now;
-    el.textContent = left > 0 ? dur(left) : `overdue ${dur(-left)}`;
+    el.textContent = left > 0 ? `${dur(left)} left` : `overdue ${dur(-left)}`;
     el.classList.toggle('crit', left <= 60e3);
   });
 }
