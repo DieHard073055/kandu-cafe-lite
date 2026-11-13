@@ -82,7 +82,8 @@ ACT.close = () => shut();
 ACT.demo = () => open('demo');
 ACT.reset = () => { reset(); setMe(null); ui.table = null; ui.srv = null; ui.carts = { g: [], s: [] }; shut(); toast('Demo reset', 'Back to a busy lunchtime floor.'); };
 // Theme: a per-browser preference, so each demo device can keep its own look.
-const THEMES = [['ember', 'Ember', ['--ember', '--tofu', '--matcha']], ['yolk', 'Yolk', ['--matcha', '--cream', '--yolk']], ['matcha', 'Matcha', ['--matcha', '--yolk', '--cream']]];
+const THEMES = [['ember', 'Ember', ['--ember', '--tofu', '--matcha']], ['yolk', 'Yolk', ['--matcha', '--cream', '--yolk']], ['matcha', 'Matcha', ['--matcha', '--yolk', '--cream']],
+  ['emerald', 'Emerald', ['--emerald', '--lilac', '--volt']], ['gunmetal', 'Gunmetal', ['--gunmetal', '--fog', '--molten']], ['butter', 'Butter', ['--butter', '--cocoa', '--eblue']]];
 let theme = 'ember';
 try { theme = localStorage.getItem('kandu.lite.theme') || theme; } catch { /* storage blocked */ }
 if (!THEMES.some(([k]) => k === theme)) theme = 'ember';

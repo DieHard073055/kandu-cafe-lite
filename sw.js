@@ -1,5 +1,5 @@
 // Offline support. Network first so a new deploy shows up straight away; the cache answers when there is no signal.
-const CACHE = 'kandu-lite-v4';
+const CACHE = 'kandu-lite-v5';
 const FILES = ['./', 'index.html', 'css/app.css', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png',
   'js/app.js', 'js/ui.js', 'js/data.js', 'js/logic.js', 'js/store.js', 'js/guest.js', 'js/server.js', 'js/kitchen.js', 'js/manager.js',
   ...['mashuni', 'catch', 'garudhiya', 'tunacurry', 'chickencurry', 'kothu', 'friedrice', 'hedhikaa', 'kurumba', 'limejuice', 'tea', 'soda'].map((d) => `images/dishes/${d}.jpg`)];
