@@ -1,12 +1,12 @@
 // Shell: role switcher, routing, rendering, events, live timers, ringing and chimes.
 import { S, load, save, reset, onRemote } from './store.js';
-import { ui, ACT, SHEETS, toast, open, shut, setMe, dur, esc } from './ui.js';
+import { ui, ACT, SHEETS, toast, open, shut, setMe, dur, esc, icon } from './ui.js';
 import { guestView, slipFile } from './guest.js';
 import { serverView, ring, pendingOrders, slipsToCheck } from './server.js';
 import { kitchenView, kitchenItems } from './kitchen.js';
 import { managerView } from './manager.js';
 
-const ROLES = [['guest', 'Guest', guestView], ['server', 'Server', serverView], ['kitchen', 'Kitchen', kitchenView], ['manager', 'Manager', managerView]];
+const ROLES = [['guest', 'Guest', guestView, 'phone'], ['server', 'Server', serverView, 'bell'], ['kitchen', 'Kitchen', kitchenView, 'chef'], ['manager', 'Manager', managerView, 'grid']];
 const VIEW = Object.fromEntries(ROLES.map(([k, , v]) => [k, v]));
 const app = document.getElementById('app');
 const shell = document.getElementById('shell');
@@ -33,13 +33,13 @@ function render() {
   const b = badges(s);
   shell.className = `shell ${ui.role === 'guest' ? 'theme-c' : 'theme-m'} ${ui.role === 'kitchen' || ui.role === 'manager' ? 'wide' : ''}`;
   app.innerHTML = `<header class="top">
-      <span class="brand" aria-hidden="true">K</span>
-      <nav class="seg" aria-label="Switch role">${ROLES.map(([k, n]) => `<a href="#${k}" class="${ui.role === k ? 'on' : ''}" ${ui.role === k ? 'aria-current="page"' : ''}>${n}${b[k] ? `<i class="dot">${b[k]}</i>` : ''}</a>`).join('')}</nav>
-      <button class="iconbtn" data-act="demo" aria-label="Demo menu">⋯</button>
+      <span class="brand"><span class="mark" aria-hidden="true">K</span><span class="wordmark">Kandu Café <em>Lite</em></span></span>
+      <nav class="seg" aria-label="Switch role">${ROLES.map(([k, n, , ic]) => `<a href="#${k}" class="${ui.role === k ? 'on' : ''}" ${ui.role === k ? 'aria-current="page"' : ''}>${icon(ic)}<span>${n}</span>${b[k] ? `<i class="dot">${b[k]}</i>` : ''}</a>`).join('')}</nav>
+      <button class="iconbtn" data-act="demo" aria-label="Demo menu">${icon('more')}</button>
     </header>
     <main class="view" data-role="${ui.role}">${VIEW[ui.role](s, now)}</main>
     ${sheet ? `<div class="scrim" data-act="close"></div><section class="sheet" role="dialog" aria-modal="true" aria-label="${esc(sheet.title)}">
-      <div class="between"><h2 class="h">${esc(sheet.title)}</h2><button class="iconbtn" data-act="close" aria-label="Close">✕</button></div>
+      <div class="grip" aria-hidden="true"></div><div class="sheet-h"><h2 class="h">${esc(sheet.title)}</h2><button class="iconbtn" data-act="close" aria-label="Close">${icon('x')}</button></div>
       <div class="sheet-body">${sheet.body}</div>${sheet.foot ? `<div class="sheet-foot">${sheet.foot}</div>` : ''}</section>` : ''}`;
   app.querySelector('.view').scrollTop = keep;
   tick();
