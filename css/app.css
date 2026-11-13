@@ -179,10 +179,9 @@ ul.items li:last-child { border-bottom: 0; }
 .dish-tx b { display: block; font-weight: 600; }
 .dish-tx small { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--muted); margin: 2px 0 6px; line-height: 1.4; }
 .dish em { font-style: normal; font-weight: 600; font-size: 14px; font-variant-numeric: tabular-nums; }
-.dish-ic { display: grid; place-items: center; width: 72px; height: 72px; flex: none; border-radius: 12px; font-size: 34px; background: linear-gradient(145deg, hsl(var(--h) 60% 94%), hsl(var(--h) 55% 86%)); }
-.theme-m .dish-ic { background: linear-gradient(145deg, hsl(var(--h) 30% 22%), hsl(var(--h) 30% 16%)); }
-.dish-ic.sm { width: 40px; height: 40px; font-size: 20px; border-radius: 9px; }
-.dish-ic.xl { width: 96px; height: 96px; font-size: 46px; border-radius: 16px; }
+.dish-ic { display: block; width: 84px; height: 84px; flex: none; border-radius: 12px; object-fit: cover; background: var(--line); }
+.dish-ic.sm { width: 44px; height: 44px; border-radius: 9px; }
+.dish-photo { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 14px; margin-bottom: 14px; background: var(--line); }
 .plus { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: var(--soft); color: var(--accent-ink); flex: none; align-self: flex-end; }
 .dish.in .plus { background: var(--accent); color: var(--on-accent); }
 .plus i { font-style: normal; font-size: 14px; font-weight: 700; }
@@ -212,6 +211,7 @@ ul.items li:last-child { border-bottom: 0; }
 .sum.strong b { font-size: 20px; }
 .sumcard .sum:first-child { border: 0; padding-top: 0; margin-top: 0; }
 .dish-hero { display: flex; gap: 16px; align-items: flex-start; }
+.dish-hero .price { flex: none; }
 .dv { font-size: 12.5px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 .desc { color: var(--ink2); margin: 4px 0 8px; }
 .price { font-weight: 650; font-size: 17px; }

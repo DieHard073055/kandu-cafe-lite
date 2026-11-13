@@ -6,18 +6,18 @@ export const TABLES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 export const BANK = { bank: 'Bank of Maldives', name: 'KANDU CAFE PVT LTD', acc: '7730000123456' };
 
 export const DISHES = [
-  { id: 'mashuni', name: 'Mas Huni & Roshi', dv: 'The island breakfast', desc: 'Tuna, fresh coconut, onion and lime with warm roshi.', cat: 'breakfast', price: 55, emoji: '🥥', hue: 38 },
-  { id: 'catch', name: 'Catch of the Day', dv: 'Fihunu mas', desc: 'Reef fish grilled over coconut husk, rice, lime and chili.', cat: 'mains', price: 145, emoji: '🐟', hue: 188 },
-  { id: 'garudhiya', name: 'Garudhiya', dv: 'Clear tuna broth', desc: 'Slow tuna broth with rice, lime, onion and chili.', cat: 'mains', price: 75, emoji: '🍲', hue: 22 },
-  { id: 'tunacurry', name: 'Mas Riha', dv: 'Tuna curry', desc: 'Tuna simmered in coconut milk and roasted spices, with rice.', cat: 'mains', price: 85, emoji: '🍛', hue: 28 },
-  { id: 'chickencurry', name: 'Kukulhu Riha', dv: 'Chicken curry', desc: 'Island chicken curry, rich with coconut milk, with rice.', cat: 'mains', price: 95, emoji: '🍗', hue: 14 },
-  { id: 'kothu', name: 'Kothu Roshi', dv: 'Chopped roshi, chicken, egg', desc: 'Roshi chopped on the hot plate with chicken, egg and vegetables.', cat: 'mains', price: 65, emoji: '🥘', hue: 8 },
-  { id: 'friedrice', name: 'Tuna Fried Rice', dv: 'Mas baiy', desc: 'Wok-fried rice with tuna, egg and vegetables.', cat: 'mains', price: 48, emoji: '🍚', hue: 48 },
-  { id: 'hedhikaa', name: 'Hedhikaa Plate', dv: 'Short eats · 6 pieces', desc: 'Gulha, bajiya, kavaabu and masroshi, fried fresh.', cat: 'shorteats', price: 45, emoji: '🥟', hue: 32 },
-  { id: 'kurumba', name: 'Fresh Coconut', dv: 'Kurumba', desc: 'Young coconut, opened to order.', cat: 'drinks', price: 40, emoji: '🌴', hue: 150 },
-  { id: 'limejuice', name: 'Lime Juice', dv: 'Lumbo fani', desc: 'Island limes pressed over ice.', cat: 'drinks', price: 25, emoji: '🍋', hue: 80 },
-  { id: 'tea', name: 'Kalhu Sai', dv: 'Black tea', desc: 'Strong, sweet island tea.', cat: 'drinks', price: 12, emoji: '☕', hue: 18 },
-  { id: 'soda', name: 'Soft Drink', dv: 'Chilled can', desc: 'Ask for what’s cold.', cat: 'drinks', price: 20, emoji: '🥤', hue: 350 },
+  { id: 'mashuni', name: 'Mas Huni & Roshi', dv: 'The island breakfast', desc: 'Tuna, fresh coconut, onion and lime with warm roshi.', cat: 'breakfast', price: 55 },
+  { id: 'catch', name: 'Catch of the Day', dv: 'Fihunu mas', desc: 'Reef fish grilled over coconut husk, rice, lime and chili.', cat: 'mains', price: 145 },
+  { id: 'garudhiya', name: 'Garudhiya', dv: 'Clear tuna broth', desc: 'Slow tuna broth with rice, lime, onion and chili.', cat: 'mains', price: 75 },
+  { id: 'tunacurry', name: 'Mas Riha', dv: 'Tuna curry', desc: 'Tuna simmered in coconut milk and roasted spices, with rice.', cat: 'mains', price: 85 },
+  { id: 'chickencurry', name: 'Kukulhu Riha', dv: 'Chicken curry', desc: 'Island chicken curry, rich with coconut milk, with rice.', cat: 'mains', price: 95 },
+  { id: 'kothu', name: 'Kothu Roshi', dv: 'Chopped roshi, chicken, egg', desc: 'Roshi chopped on the hot plate with chicken, egg and vegetables.', cat: 'mains', price: 65 },
+  { id: 'friedrice', name: 'Tuna Fried Rice', dv: 'Mas baiy', desc: 'Wok-fried rice with tuna, egg and vegetables.', cat: 'mains', price: 48 },
+  { id: 'hedhikaa', name: 'Hedhikaa Plate', dv: 'Short eats · 6 pieces', desc: 'Gulha, bajiya, kavaabu and masroshi, fried fresh.', cat: 'shorteats', price: 45 },
+  { id: 'kurumba', name: 'Fresh Coconut', dv: 'Kurumba', desc: 'Young coconut, opened to order.', cat: 'drinks', price: 40 },
+  { id: 'limejuice', name: 'Lime Juice', dv: 'Lumbo fani', desc: 'Island limes pressed over ice.', cat: 'drinks', price: 25 },
+  { id: 'tea', name: 'Kalhu Sai', dv: 'Black tea', desc: 'Strong, sweet island tea.', cat: 'drinks', price: 12 },
+  { id: 'soda', name: 'Soft Drink', dv: 'Ice cold', desc: 'Ask for what’s cold.', cat: 'drinks', price: 20 },
 ];
 export const DISH = Object.fromEntries(DISHES.map((d) => [d.id, d]));
 export const CATS = [['all', 'All'], ['breakfast', 'Breakfast'], ['mains', 'Mains'], ['shorteats', 'Short eats'], ['drinks', 'Drinks']];

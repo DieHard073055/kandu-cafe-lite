@@ -89,7 +89,7 @@ SHEETS.demo = () => ({
       <li><b>Server</b>: rings on calls, accepts orders, serves, takes orders for guests without data, checks slips.</li>
       <li><b>Kitchen</b>: move tickets along, tap a dish to mark it sold out.</li>
       <li><b>Manager</b>: the whole floor at a glance. Tap any table.</li></ol>
-    <p class="hint">Demo only: everything is stored in this browser. Real phones on different networks would share one live backend.</p>`,
+    <p class="hint">Demo only: everything is stored in this browser. Real phones on different networks would share one live backend. Food photos are AI-generated for the demo.</p>`,
   foot: `${ui.role === 'guest' ? '<button class="btn ghost" data-act="newguest">New guest phone</button>' : ''}<button class="btn grow" data-act="reset">Reset demo floor</button>`,
 });
 

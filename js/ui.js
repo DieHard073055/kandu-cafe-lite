@@ -77,7 +77,8 @@ export function copy(text) {
 }
 
 // ---- menu + cart, shared by the guest (cart 'g') and the server ordering for a table (cart 's') ----
-export const dishTile = (d, cls = '') => `<span class="dish-ic ${cls}" style="--h:${d.hue}" aria-hidden="true">${d.emoji}</span>`;
+export const dishPhoto = (d) => `images/dishes/${d.id}.jpg`;
+export const dishTile = (d, cls = '') => `<img class="dish-ic ${cls}" src="${dishPhoto(d)}" alt="" loading="lazy" decoding="async">`;
 export const cartTotal = (cart) => cart.reduce((a, l) => a + l.qty * DISH[l.dish].price, 0);
 export const cartCount = (cart) => cart.reduce((a, l) => a + l.qty, 0);
 
@@ -127,7 +128,7 @@ SHEETS.dish = () => {
   const ctx = ui.role === 'server' ? 's' : 'g';
   return {
     title: d.name,
-    body: `<div class="dish-hero">${dishTile(d, 'xl')}<div><p class="dv">${esc(d.dv)}</p><p class="desc">${esc(d.desc)}</p><p class="price">${money(d.price)}</p></div></div>
+    body: `<img class="dish-photo" src="${dishPhoto(d)}" alt="${esc(d.name)}"><div class="dish-hero"><div class="grow"><p class="dv">${esc(d.dv)}</p><p class="desc">${esc(d.desc)}</p></div><p class="price">${money(d.price)}</p></div>
       <label class="lbl" for="note">${icon('pen')} Note for the kitchen <span>Optional</span></label>
       <input id="note" data-bind="note" maxlength="80" placeholder="e.g. no chili, less sugar" value="${field('note')}">`,
     foot: `${stepper('qty', '', ui.f.qty)}<button class="btn grow" data-act="add" data-arg="${ctx}">Add to order · ${money(ui.f.qty * d.price)}</button>`,
